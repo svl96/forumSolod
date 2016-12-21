@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Крутой Форум</title>
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+</head>
+<body>
+<header>
+    <a href="/"> Main page </a>
+    {% if username %}
+        <a href="/auth/logout/" class="reg">Выйти({{ username }})</a>
+    {% else %}
+        <a href="/auth/login/" class="reg">Войти</a>
+    {% endif %}
+</header>
+<main>
+    {%  block section_block %} {% endblock %}
+    {%  block themes_block %} {% endblock %}
+    {%  block comments_block %} {% endblock %}
+    {%  block login %}{% endblock %}
+</main>
+<footer>
+</footer>
+</body>
+</html>

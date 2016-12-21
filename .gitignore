@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+.idea
+forumenv
+db.sqlite3
+forum_db.sqlite3

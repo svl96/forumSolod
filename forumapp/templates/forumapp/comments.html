@@ -1,0 +1,20 @@
+{% extends "forumapp/main.html" %}
+
+{% block comments_block %}
+
+{% for comment in comments %}
+    <div>
+        <h1> {{ comment.comment_author }}</h1>
+        <h4> {{ comment.comment_date }}</h4>
+        <p> {{ comment.comment_text }}</p>
+        <hr>
+    </div>
+{% endfor %}
+    {% if username %}
+    <form action="/comment/addcomment/{{ theme_id }}/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Отправить комметарий">
+    </form>
+    {% endif %}
+{% endblock %}

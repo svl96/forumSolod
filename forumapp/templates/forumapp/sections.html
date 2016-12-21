@@ -1,0 +1,14 @@
+{% extends "forumapp/main.html" %}
+
+{% block section_block %}
+
+{% for section in sections %}
+    <div>
+        <h1><a href="{{ section.id }}/themes/"> {{ section.sections_title }} </a></h1>
+        <p>{{ section.sections_date }}</p>
+        <hr>
+    </div>
+{% endfor %}
+Здесь вы видете разделы
+
+{% endblock %}

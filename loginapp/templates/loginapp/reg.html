@@ -1,0 +1,12 @@
+
+{% extends 'forumapp/main.html' %}
+
+{% block login %}
+<div class="auth">
+    <form action="/auth/reg/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+</div>
+{% endblock %}
