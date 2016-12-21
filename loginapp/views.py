@@ -31,7 +31,7 @@ def send_reg_confirm(user):
     title = 'Email confirm'
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     content = 'https://svl96.pythonanywhere.com/auth/valid/' + str(uid) + '/' + token + '/'
-    send_mail(title, content, 'no-reply@svl96.ru', [user.email], fail_silently=False)
+    send_mail(title, "testcontent", 'no-reply@svl96.ru', ["vlasov.ft@gmail.com"])
 
 
 def logout(request):
