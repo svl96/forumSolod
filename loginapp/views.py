@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from .forms import MyUserCreateForm
+from .forms import MyUserCreateForm, AuthForm
 # Create your views here.
 
 
 def login(request):
+    args = dict()
+    args['form'] = AuthForm()
     if request.POST:
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
@@ -13,11 +15,10 @@ def login(request):
             auth.login(request, user)
             return redirect('/')
         else:
-            args = dict()
             args['login_error'] = 'Неправильные логин/пароль'
             return render(request, 'loginapp/auth.html', args)
     else:
-        return render(request, 'loginapp/auth.html', {})
+        return render(request, 'loginapp/auth.html', args)
 
 
 def logout(request):
