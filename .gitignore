@@ -1,6 +1,7 @@
 *.pyc
 __pycache__
 .idea
+my_settings.py
 forumenv
 db.sqlite3
 forum_db.sqlite3

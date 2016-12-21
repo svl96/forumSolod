@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from . import my_settings as ms
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,10 +28,17 @@ DEBUG = True
 ALLOWED_HOSTS = ["127.0.0.1", "svl96.pythonanywhere.com"]
 
 #reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY = "6LdyYg8UAAAAAPIAa-Pgru1W0_ebLFM4hdmgW1Ax"
-RECAPTCHA_PRIVATE_KEY = "6LdyYg8UAAAAAPpoD35azCDk1AjMyMTHigbZpG1O"
-RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
-NOCAPTCHA = True
+# RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
+
+RECAPTCHA_PUBLIC_KEY = ms.RECAPTCHA_PUBLIC_KEY
+RECAPTCHA_PRIVATE_KEY = ms.RECAPTCHA_PRIVATE_KEY
+
+EMAIL_HOST = ms.EMAIL_HOST
+EMAIL_PORT = ms.EMAIL_PORT
+EMAIL_USE_TLS = ms.EMAIL_USE_TLS
+
+EMAIL_HOST_USER = ms.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = ms.EMAIL_HOST_PASSWORD
 
 # Application definition
 INSTALLED_APPS = [

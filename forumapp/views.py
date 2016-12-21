@@ -10,6 +10,7 @@ def sections(request):
     args = dict()
     args['sections'] = Sections.objects.all()
     args['username'] = request.user.username
+    args['isNormalUser'] = request.user.groups.filter(name='normalUser').exists()
     return render(request, 'forumapp/sections.html', args)
 
 
@@ -18,15 +19,19 @@ def themes(request, section_id):
     args['section_id'] = section_id
     args['username'] = request.user.username
     args['themes'] = Themes.objects.filter(theme_section_id=section_id)
+    args['isNormalUser'] = request.user.groups.filter(name='normalUser').exists()
     return render(request, 'forumapp/themes.html', args)
 
 
-def comments(request, theme_id):
+def comments(request, section_id, theme_id):
     comment_form = CommentForm
     args = dict()
     args['theme_id'] = theme_id
+    args['section_id'] = section_id
     args['username'] = request.user.username
+    args['isNormalUser'] = request.user.groups.filter(name='normalUser').exists()
     args['comments'] = Comments.objects.filter(comment_theme_id=theme_id)
+    args['section_title'] = Sections.objects.get(id=section_id).sections_title
     args['form'] = comment_form
     return render(request, 'forumapp/comments.html', args)
 

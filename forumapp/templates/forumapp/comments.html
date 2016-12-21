@@ -2,6 +2,7 @@
 
 {% block comments_block %}
 
+    <a href="/{{ section_id }}/themes/">{{ section_title }}</a>
 {% for comment in comments %}
     <div>
         <h1> {{ comment.comment_author }}</h1>
@@ -10,7 +11,7 @@
         <hr>
     </div>
 {% endfor %}
-    {% if username %}
+    {% if username and isNormalUser %}
     <form action="/comment/addcomment/{{ theme_id }}/" method="post">
         {% csrf_token %}
         {{ form }}

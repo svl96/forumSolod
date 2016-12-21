@@ -11,7 +11,11 @@
 <header>
     <a href="/"> Main page </a>
     {% if username %}
-        <a href="/auth/logout/" class="reg">Выйти({{ username }})</a>
+        {% if isNormalUser %}
+            <a href="/auth/logout/" class="reg">Выйти({{ username }})(valid)</a>
+        {% else %}
+            <a href="/auth/logout/" class="reg">Выйти({{ username }})(not-valid)</a>
+        {% endif %}
     {% else %}
         <a href="/auth/login/" class="reg">Войти</a>
     {% endif %}
