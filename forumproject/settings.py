@@ -25,11 +25,15 @@ SECRET_KEY = '#lr#r8+$-veujz1f%8ez_snhuwh#06df##tp4bm-h2^=qt)kay'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "svl96.pythonanywhere.com"]
 
+#reCAPTCHA keys
+RECAPTCHA_PUBLIC_KEY = "6LdyYg8UAAAAAPIAa-Pgru1W0_ebLFM4hdmgW1Ax"
+RECAPTCHA_PRIVATE_KEY = "6LdyYg8UAAAAAPpoD35azCDk1AjMyMTHigbZpG1O"
+RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
+NOCAPTCHA = True
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
