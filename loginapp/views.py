@@ -30,8 +30,8 @@ def send_reg_confirm(user):
     token = default_token_generator.make_token(user)
     title = 'Email confirm'
     uid = urlsafe_base64_encode(force_bytes(user.pk))
-    content = 'https://svl96.pythonanywhere.com/auth/valid/' + str(uid) + '/' + token + '/'
-    send_mail(title, "testcontent", 'no-reply@svl96.ru', ["vlasov.ft@gmail.com"])
+    content = 'https://svl96.pythonanywhere.com/auth/valid/' + uid.decode() + '/' + token + '/'
+    send_mail(title, content, 'sfiit@mail.ru', [user.email], fail_silently=False)
 
 
 def logout(request):
@@ -50,6 +50,7 @@ def confirm_user(request, uidb64, token):
                 user.groups.add(gr)
         except:
             pass
+    return redirect('/')
 
 
 def reg(request):
