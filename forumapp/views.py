@@ -46,6 +46,7 @@ def comments(request, section_id, theme_id):
     args['theme_id'] = theme_id
     args['section_id'] = section_id
     args['username'] = request.user.username
+    args['user'] = request.user
     args['isNormalUser'] = request.user.groups.filter(name='normalUser').exists()
     args['comments'] = Comments.objects.filter(comment_theme_id=theme_id)
     args['section_title'] = Sections.objects.get(id=section_id).sections_title

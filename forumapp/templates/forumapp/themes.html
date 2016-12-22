@@ -11,7 +11,7 @@
 {% endif %}
 {% for theme in themes %}
     <div>
-        {% if theme.theme_author.username == username or theme.theme_author.is_staff %}
+        {% if theme.theme_author.username == username or user.is_staff %}
             <h4><a href="/theme/deletetheme/{{ theme.id }}/">Удалить тему [X] </a></h4>
         {% endif %}
         <h1><a href="/{{ section_id }}/themes/{{ theme.id }}/">
