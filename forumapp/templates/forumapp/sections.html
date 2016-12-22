@@ -2,8 +2,18 @@
 
 {% block section_block %}
 
+{% if user.is_staff %}
+    <form action="/section/addsection/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Создать секцию">
+    </form>
+{% endif %}
 {% for section in sections %}
     <div>
+        {% if user.is_staff %}
+            <h4><a href="/section/deletesection/{{ section.id }}/">Удалить Секцию [X]</a></h4>
+        {% endif %}
         <h1><a href="{{ section.id }}/themes/"> {{ section.sections_title }} </a></h1>
         <p>{{ section.sections_date }}</p>
         <hr>

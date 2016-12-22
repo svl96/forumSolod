@@ -2,9 +2,12 @@
 
 {% block comments_block %}
 
-    <a href="/{{ section_id }}/themes/">{{ section_title }}</a>
+    <h1><a href="/{{ section_id }}/themes/">{{ section_title }}</a></h1>
 {% for comment in comments %}
     <div>
+        {% if comment.comment_author.username == username or comment.comment_author.is_staff%}
+            <h4><a href="/comment/deletecomment/{{ comment.id }}/">Удалить комментарий [X] </a></h4>
+        {% endif %}
         <h1> {{ comment.comment_author }}</h1>
         <h4> {{ comment.comment_date }}</h4>
         <p> {{ comment.comment_text }}</p>

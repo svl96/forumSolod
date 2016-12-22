@@ -2,8 +2,18 @@
 
 {% block themes_block %}
 
+{% if username and isNormalUser %}
+<form action="/theme/addtheme/{{ section_id }}/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Создать тему">
+</form>
+{% endif %}
 {% for theme in themes %}
     <div>
+        {% if theme.theme_author.username == username or theme.theme_author.is_staff %}
+            <h4><a href="/theme/deletetheme/{{ theme.id }}/">Удалить тему [X] </a></h4>
+        {% endif %}
         <h1><a href="/{{ section_id }}/themes/{{ theme.id }}/">
             {{ theme.theme_title }}
             </a>
